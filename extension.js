@@ -5,7 +5,7 @@ const fs = require('fs');
 
 function activate(context) {
 
-    var disposable = vscode.commands.registerCommand('extension.gitmicReset', async () => {
+    vscode.commands.registerCommand('extension.gitmicReset', () => {
         try {
             context.globalState.update('GitHubAuthToken', undefined);
             context.globalState.update('defaultProjectDir', undefined);
@@ -16,7 +16,7 @@ function activate(context) {
         }
     });
 
-    var disposable = vscode.commands.registerCommand('extension.gitmicOpen', async () => {
+    vscode.commands.registerCommand('extension.gitmicOpen', async () => {
         
         try {
 
@@ -69,8 +69,6 @@ function activate(context) {
             vscode.window.showErrorMessage(err.message);
         }
     });
-
-    context.subscriptions.push(disposable);
 }
 exports.activate = activate;
 
