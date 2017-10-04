@@ -54,7 +54,13 @@ function activate(context) {
                             var res = await runCommand(`git clone ${repoList[i].ssh_url} ${targetPath}`);    
                         } else {
                             vscode.window.showInformationMessage(`Pulling ${repoList[i].name} to ${targetPath}`);
-                            var res = await runCommand(`cd ${targetPath} && git pull`);
+                            var res = await runCommand(`cd ${targetPath} && git fetch`);
+                            try{
+                                res = await runCommand(`cd ${targetPath} && git merge`);
+                            }
+                            catch(err){
+                                console.log('merge conflict');
+                            }
                         }
                         let uri = vscode.Uri.parse(targetPath);
                         let success = await vscode.commands.executeCommand('vscode.openFolder', uri, true);
