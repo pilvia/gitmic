@@ -52,6 +52,9 @@ function activate(context) {
                         if (!fs.existsSync(targetPath)) {
                             vscode.window.showInformationMessage(`Cloning ${repoList[i].name} to ${targetPath}`);
                             var res = await runCommand(`git clone ${repoList[i].ssh_url} ${targetPath}`);    
+                        } else {
+                            vscode.window.showInformationMessage(`Pulling ${repoList[i].name} to ${targetPath}`);
+                            var res = await runCommand(`cd ${targetPath} && git pull`);
                         }
                         let uri = vscode.Uri.parse(targetPath);
                         let success = await vscode.commands.executeCommand('vscode.openFolder', uri, true);
