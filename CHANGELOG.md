@@ -1,7 +1,8 @@
 # Change Log
-All notable changes to the "gitmic" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [0.0.4] 2017-10-06
+### Added
+- If repository is already cloned to workspace, GitMic will automatically pull latest changes for you.
 
-## [Unreleased]
+## [0.0.3] 2017-09-26
 - Initial release
