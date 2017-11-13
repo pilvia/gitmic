@@ -47,13 +47,16 @@ function activate(context) {
 
             for (let i in repoList){
                 if (repoList[i].full_name == selected) {
+                    let statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left)
+                    statusBarItem.show();
                     try{
                         let targetPath = `${projectDir}/${repoList[i].name}`
                         if (!fs.existsSync(targetPath)) {
-                            vscode.window.showInformationMessage(`Cloning ${repoList[i].name} to ${targetPath}`);
+                            
+                            statusBarItem.text = `Cloning ${repoList[i].name} to ${targetPath}`;
                             var res = await runCommand(`git clone ${repoList[i].ssh_url} ${targetPath}`);    
                         } else {
-                            vscode.window.showInformationMessage(`Pulling ${repoList[i].name} to ${targetPath}`);
+                            statusBarItem.text = `Pulling ${repoList[i].name} to ${targetPath}`;
                             var res = await runCommand(`cd ${targetPath} && git fetch`);
                             try{
                                 res = await runCommand(`cd ${targetPath} && git merge`);
@@ -62,11 +65,13 @@ function activate(context) {
                                 console.log('merge conflict');
                             }
                         }
-                        let uri = vscode.Uri.parse(targetPath);
-                        let success = await vscode.commands.executeCommand('vscode.openFolder', uri, true);
+                        statusBarItem.dispose();
+                        let uri = vscode.Uri.parse(projectDir);
+                        let success = await vscode.commands.executeCommand('vscode.openFolder', uri);
                     }
                     catch(err){
                         console.log(err);
+                        statusBarItem.dispose();
                         vscode.window.showErrorMessage(err.message);
                     }
                 }

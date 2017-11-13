@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.0.7] 2017-11-13
+### Changed
+- Open repository in same window instead of new. This makes use of new Workspace feature of VS Code.
+- Use status bar instead of notification
+
 ## [0.0.5] 2017-10-06
 ### Changed
 - Changed log updated (Wow!)
