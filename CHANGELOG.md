@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.0.8] 2018-2-9
+### Changed
+- Get max 100 repos from GitHub
+
 ## [0.0.7] 2017-11-13
 ### Changed
 - Open repository in same window instead of new. This makes use of new Workspace feature of VS Code.

@@ -2,7 +2,7 @@
     "name": "gitmic",
     "displayName": "GitMic - GitHub helper for Microservices",
     "description": "GitMic helps you to survive on microservice economy, where count of GitHub repositories has raised dramatically.",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "publisher": "pilvia",
     "preview": true,
     "repository": {
